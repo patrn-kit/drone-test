@@ -1,0 +1,29 @@
+{
+  "name": "drone-test",
+  "version": "1.0.0",
+  "description": "Automatic Drone Farmer Coding Problem",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrn-kit/drone-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patrn-kit/drone-test/issues"
+  },
+  "homepage": "https://github.com/patrn-kit/drone-test#readme",
+  "dependencies": {
+    "yargs": "^17.2.1"
+  },
+  "bin": {
+    "drone": "./bin/index.js"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
