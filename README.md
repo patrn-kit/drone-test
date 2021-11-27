@@ -55,7 +55,7 @@ Explanation:
 - U - UP
 - D - DOWN
 
-e.g. R4 - Move to right direction 4 steps
+e.g. R4 - Move to the right direction 4 steps
 
 3. The output of command will show:
 ```
@@ -78,7 +78,7 @@ $ npm run test
 ```
 Example Output
 ```
-> drone-test@1.0.0 test /Users/pat/workspace/drone-test
+> drone-test@1.0.0 test /path/to/project/drone-test
 > jest --coverage
 
  PASS  __tests__/droneTestCli.spec.js

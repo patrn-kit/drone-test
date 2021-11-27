@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const yargs = require('yargs');
-const { formatCurrentDateTime, getLocation, getMoveContent, setInput } = require('../src/engine')
+const { formatCurrentDateTime, getLocation, getMoveContent, setInput } = require('../src/engine');
 
 // Arguments of command line
 const options = yargs

@@ -31,7 +31,6 @@ function getLocation(width, height, move) {
     pos = pos.trim();
     const direction = pos[0].trim();
     let step = Number(pos.substring(1).trim());
-    // console.log('direction: ', direction, ', step:', step);
     const newPosition = calcLocation(horizontal, vertical, direction, step);
     horizontal = newPosition.horizontal;
     vertical = newPosition.vertical;
@@ -47,10 +46,10 @@ function getLocation(width, height, move) {
       break;
     } else if (newPosition.isError) {
       isError = true;
-      errMsg = 'Your direction letter in the move file was incorrect. It should include only R, L, U, D.'
+      errMsg = 'Your direction letter in the move file was incorrect. It should include only R, L, U, D.';
     } else if (isNaN(step)){
       isError = true;
-      errMsg = 'Your step count in the move file should be a number.'
+      errMsg = 'Your step count in the move file should be a number.';
     }
   }
   let output = `Current Location: ${horizontal},${vertical}`;
