@@ -7,6 +7,7 @@ Automatic Drone Farmer Coding Problem
 2. NPM was already installed
 
 ## Run following commands to get started
+From project home directory
 ```
 $ npm install
 ```
