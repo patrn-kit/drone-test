@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 const yargs = require('yargs');
-const { formatCurrentDateTime, getLocation, getMoveContent, setInput } = require('../src/engine');
+const { showCurrentDateTime, showInput } = require('../src/controllers/information');
+const { getLocation } = require('../src/controllers/location');
+const { getMoveContent } = require('../src/controllers/moveContent');
 
 // Arguments of command line
 const options = yargs
@@ -21,7 +23,7 @@ const currentDateTime = new Date();
 if (isError) {
   console.log('Unable to find the file. Please check your file path again.');
 } else {
-  console.log(setInput(options.width, options.height, options.file));
-  console.log(formatCurrentDateTime(currentDateTime));
+  console.log(showInput(options.width, options.height, options.file));
+  console.log(showCurrentDateTime(currentDateTime));
   console.log(getLocation(options.width, options.height, move));
 }

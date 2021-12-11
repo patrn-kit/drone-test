@@ -35,41 +35,38 @@ Options:
 
 2. Example command used
 ```
-$ node . -w 10 -h 5 -f src/move.txt
+$ node . -w 10 -h 5 -f data/move.txt
 ```
 Example Output
 ```
-Width: 10, Height: 5, File: src/move.txt
-Current Date Time: 11/27/2021, 4:25:27 PM
-Current Location: 7,4
+Width: 10, Height: 5, File: data/move.txt
+Current Date Time: 12/7/2021, 2:42:22 PM
+Current Location: Column = 10, Row = 5, Drone is heading South
 ```
 
 # 3. Rules of Drone Move
 1. Width and Height were required to set up the land size via arguments **-w**, **-h** as above example command
-2. Provide file path via argument **-f** as above example command. Text file (.txt) will store drone moving information includes direction letter and step count. As the example below:
+2. Provide file path via argument **-f** as above example command. Text file (.txt) will store drone moving information as the example below:
 ```
-R4,D2,D2,R3,U3,D2,L1
+M,R,L
 ```
 Explanation:
-- R - RIGHT
-- L - LEFT
-- U - UP
-- D - DOWN
-
-e.g. R4 - Move to the right direction 4 steps
+- M - MOVE ahead 1 step
+- R - Turn RIGHT 1 step
+- L - Turn LEFT 1 step
 
 3. The output of command will show:
 ```
-Width: 10, Height: 5, File: src/move.txt
-Current Date Time: 11/27/2021, 4:25:27 PM
-Current Location: 7,4
+Width: 10, Height: 5, File: data/move.txt
+Current Date Time: 12/7/2021, 2:47:53 PM
+Current Location: Column = 3, Row = 2, Drone is heading East
 ```
 Explanation:
 - First line - your inputs
 - Current Date Time - output date time
-- Current Location - result position of all move in .txt file in format of *horizontal,vertical*
-4. The land grid will start from top left corner as 1,1 position. Go to RIGHT position will increase horizontal step. Go to DOWN position will increase vertical step.
-5. Default position of drone will be always at block 1,1
+- Current Location - result position of all move in .txt file
+4. The land grid will start from top left corner at Column = 1, Row = 1 position. Go to the EAST direction of the land will increase horizontal step. Go to the SOUTH direction of the land will increase vertical step.
+5. Default position of drone will be always at a position of Column = 1, Row = 1, Drone is heading East
 6. Unable to move outside the land size. It means if file contains outside move it will show error message.
 
 # 4. How to run test coverage
@@ -79,35 +76,31 @@ $ npm run test
 ```
 Example Output
 ```
-> drone-test@1.0.0 test /path/to/project/drone-test
+> drone-test@1.0.0 test
 > jest --coverage
 
- PASS  __tests__/droneTestCli.spec.js
-  setInput
-    ✓ it should return correct input (2 ms)
-  getMoveContent
-    ✓ it should return move content from file correctly (2 ms)
-    ✓ it should return error message when file was not found (1 ms)
-  getLocation
-    ✓ it should return correct Location (1 ms)
-    ✓ it should return correct Location for with space move information (1 ms)
-    ✓ it should show error text for move exceed land size horizontally (1 ms)
-    ✓ it should show error text for move exceed land size vertically
-    ✓ it should show error text for unrecognized move letter
-    ✓ it should show error text for NaN step number (1 ms)
-  formatCurrentDateTime
-    ✓ it should return formatted date time (20 ms)
+ PASS  __tests__/location.spec.js
+ PASS  __tests__/moveContent.spec.js
+ PASS  __tests__/information.spec.js
+-----------------|---------|----------|---------|---------|-------------------
+File             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------|---------|----------|---------|---------|-------------------
+All files        |     100 |      100 |     100 |     100 |                   
+ controllers     |     100 |      100 |     100 |     100 |                   
+  calculation.js |     100 |      100 |     100 |     100 |                   
+  information.js |     100 |      100 |     100 |     100 |                   
+  location.js    |     100 |      100 |     100 |     100 |                   
+  moveContent.js |     100 |      100 |     100 |     100 |                   
+ services        |     100 |      100 |     100 |     100 |                   
+  readFile.js    |     100 |      100 |     100 |     100 |                   
+ utils           |     100 |      100 |     100 |     100 |                   
+  dateFormat.js  |     100 |      100 |     100 |     100 |                   
+-----------------|---------|----------|---------|---------|-------------------
 
------------|---------|----------|---------|---------|-------------------
-File       | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
------------|---------|----------|---------|---------|-------------------
-All files  |     100 |      100 |     100 |     100 |                   
- engine.js |     100 |      100 |     100 |     100 |                   
------------|---------|----------|---------|---------|-------------------
-Test Suites: 1 passed, 1 total
-Tests:       10 passed, 10 total
+Test Suites: 3 passed, 3 total
+Tests:       13 passed, 13 total
 Snapshots:   0 total
-Time:        0.473 s, estimated 1 s
+Time:        0.701 s, estimated 1 s
 Ran all test suites.
 ```
 
